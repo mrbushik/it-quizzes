@@ -21,7 +21,6 @@ const QuizBody: React.FC<quizBodyProps> = ({
     setCurrentQuestion((perv) => perv + 1);
     onChange(0);
   };
-  console.log(data.quizes.length);
 
   return (
     <div className="ms-3">
