@@ -17,9 +17,20 @@ const QuizResult: React.FC<quizResultProps> = ({
   correctAnswer,
   data,
 }) => {
-  console.log(correctAnswer[0].answers[1]);
+  const userCorrectAnswers: number = correctAnswer[0].answers.reduce(
+    (acc: number, item: number, index: number) =>
+      item === answers[index] ? acc + 1 : acc,
+    0
+  );
+
+  let percentageRatio: number = Math.trunc(
+    (userCorrectAnswers / data.length) * 100
+  );
+
   return (
     <div>
+      <h1>Ваш результат {percentageRatio}%</h1>
+      <h3>Количество правильных ответов: {userCorrectAnswers}</h3>
       {data.map((item: any, index: number) => (
         <CorrectAnswers
           key={index}
@@ -28,6 +39,8 @@ const QuizResult: React.FC<quizResultProps> = ({
           answer2={item.answer2}
           answer3={item.answer3}
           answer4={item.answer4}
+          questionIndex={index}
+          userAnswer={answers[index]}
           correctAnswer={correctAnswer[0].answers[index]}
         />
       ))}

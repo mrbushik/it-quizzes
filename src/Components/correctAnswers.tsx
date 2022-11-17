@@ -7,6 +7,8 @@ interface correctAnswerProps {
   answer3?: string;
   answer4?: string;
   correctAnswer: any;
+  userAnswer: number;
+  questionIndex: number;
 }
 
 const CorrectAnswers: React.FC<correctAnswerProps> = ({
@@ -16,23 +18,32 @@ const CorrectAnswers: React.FC<correctAnswerProps> = ({
   answer3,
   answer4,
   correctAnswer,
+  userAnswer,
+  questionIndex,
 }) => {
+  const handleColor = (answerIndex: number) => {
+    if (correctAnswer === answerIndex) return "text-success";
+    if (userAnswer && userAnswer === answerIndex) return "text-danger";
+  };
+
   return (
     <div className="my-50 p-4 me-3 bg-light">
-      <h4 className="my-3 fw-semibold">{question}</h4>
-      <div className={correctAnswer === 1 ? "text-success" : ""}>
+      <h4 className="my-3 fw-semibold">
+        №{questionIndex + 1} {question}
+      </h4>
+      <div className={handleColor(1)}>
         <p>{answer1}</p>
       </div>
-      <div className={correctAnswer === 2 ? "text-success" : ""}>
+      <div className={handleColor(2)}>
         <p>{answer2}</p>
       </div>
       {answer3 && (
-        <div className={correctAnswer === 3 ? "text-success" : ""}>
+        <div className={handleColor(3)}>
           <p>{answer3}</p>
         </div>
       )}
       {answer4 && (
-        <div className={correctAnswer === 4 ? "text-success" : ""}>
+        <div className={handleColor(4)}>
           <p>{answer4}</p>
         </div>
       )}
