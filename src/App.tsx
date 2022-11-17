@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./Components/navBar";
+import NavBar from "./Components/Navigation/navBar";
 import MainPage from "./Components/Pages/mainPage";
 import { Route, Switch, Redirect } from "react-router-dom";
 import QuizPage from "./Components/Pages/quizPage";

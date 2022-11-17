@@ -15,13 +15,13 @@ const Quiz: React.FC<QuizProps> = ({
   index,
 }) => {
   return (
-    <div className="quiz-item">
-      <Link to={`/${index}`}>
-        <img src={quizImg} className="quiz-img" />
-        <h5>{quizName}</h5>
+    <Link to={`/${index}`} className="text-decoration-none">
+      <div className="quiz-item pt-3 text-dark">
+        <img src={quizImg} className="quiz-img mb-3" />
+        <h5 className="px-2 fw-semibold">{quizName}</h5>
         <p>{quizDescription}</p>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
