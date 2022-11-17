@@ -24,18 +24,6 @@ const QuizBody: React.FC<quizBodyProps> = ({
     onChange(0);
   };
 
-  const writeInStorage = (answersData: Array<number> )=>{
-    localStorage.setItem('answers', answersData.join(''))
-    localStorage.setItem('questionNumber', String(currentQuestion + 1))
-    const answers : string | null = localStorage.getItem('answers')
-
-    setAnswers(answers.split('').map(item => Number(item))
-
-  }
-
-  return (
-    <div className="quiz-body">
-
   return (
     <div className="ms-3">
       {data.quizes.length > currentQuestion + 1 ? (

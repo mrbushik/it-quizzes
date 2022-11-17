@@ -29,8 +29,8 @@ const QuizResult: React.FC<quizResultProps> = ({
 
   return (
     <div>
-      <h1>Ваш результат {percentageRatio}%</h1>
-      <h3>Количество правильных ответов: {userCorrectAnswers}</h3>
+      <h1 className="text-center mt-4">Ваш результат {percentageRatio}%</h1>
+      <h4 className='mt-5'>Количество правильных ответов: {userCorrectAnswers}</h4>
       {data.map((item: any, index: number) => (
         <CorrectAnswers
           key={index}
