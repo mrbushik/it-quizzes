@@ -35,26 +35,32 @@ const QuizItem: React.FC<quizItemProps> = ({
         <div className={handleColor(1)} onClick={() => onChange(1)}>
           <div>
             <input
-              className="form-check-input ms-0 me-3"
+              className="form-check-input ms-0 me-3 pointer"
               type="radio"
               checked={answerNumber === 1 ? true : false}
               onChange={onChange.bind(null, 1)}
             />
           </div>
-          <label className="form-check-label" htmlFor="flexRadioDefault1">
+          <label
+            className="form-check-label pointer"
+            htmlFor="flexRadioDefault1"
+          >
             {data[currentQuestion].answer1}
           </label>
         </div>
         <div className={handleColor(2)} onClick={() => onChange(2)}>
           <div>
             <input
-              className="form-check-input ms-0 me-3"
+              className="form-check-input ms-0 me-3 pointer"
               type="radio"
               checked={answerNumber === 2 ? true : false}
               onChange={onChange.bind(null, 2)}
             />
           </div>
-          <label className="form-check-label" htmlFor="flexRadioDefault2">
+          <label
+            className="form-check-label pointer"
+            htmlFor="flexRadioDefault2"
+          >
             {data[currentQuestion].answer2}
           </label>
         </div>
@@ -62,13 +68,16 @@ const QuizItem: React.FC<quizItemProps> = ({
           <div className={handleColor(3)} onClick={() => onChange(3)}>
             <div>
               <input
-                className="form-check-input ms-0 me-3"
+                className="form-check-input ms-0 me-3 pointer"
                 type="radio"
                 checked={answerNumber === 3 ? true : false}
                 onChange={onChange.bind(null, 3)}
               />
             </div>
-            <label className="form-check-label" htmlFor="flexRadioDefault2">
+            <label
+              className="form-check-label pointer"
+              htmlFor="flexRadioDefault2"
+            >
               {data[currentQuestion].answer3}
             </label>
           </div>
@@ -77,13 +86,16 @@ const QuizItem: React.FC<quizItemProps> = ({
           <div className={handleColor(4)} onClick={() => onChange(4)}>
             <div>
               <input
-                className="form-check-input ms-0 me-3"
+                className="form-check-input ms-0 me-3 pointer"
                 type="radio"
                 checked={answerNumber === 4 ? true : false}
                 onChange={onChange.bind(null, 4)}
               />
             </div>
-            <label className="form-check-label" htmlFor="flexRadioDefault2">
+            <label
+              className="form-check-label pointer"
+              htmlFor="flexRadioDefault2"
+            >
               {data[currentQuestion].answer4}
             </label>
           </div>

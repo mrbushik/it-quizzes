@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import QuizResult from "./quizResult";
 import QuizItem from "./quizItem";
+import { useDispatch, useSelector } from "react-redux";
+import { answersUser, questionIndex } from "./redux/actions/quizInfo";
 
 type quizBodyProps = {
   data: any;
@@ -13,30 +15,37 @@ const QuizBody: React.FC<quizBodyProps> = ({
   answerNumber,
   onChange,
 }) => {
-  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [answers, setAnswers] = useState<number[]>([]);
+  const dispatch = useDispatch();
+
+  const quizAnswerNumber: number = useSelector(
+    (state: any) => state.quizInfo.answerNumber
+  );
+
+  const userAnswers: Array<number> = useSelector(
+    (state: any) => state.quizInfo.userAnswers
+  );
 
   const newQuestion = () => {
     if (!answerNumber) return;
-    const newAnswers: Array<number> = [...answers, answerNumber];
-    setAnswers(newAnswers);
-    setCurrentQuestion((perv) => perv + 1);
+    const newAnswers: Array<number> = [...userAnswers, answerNumber];
+    dispatch(answersUser(newAnswers));
+    dispatch(questionIndex(quizAnswerNumber + 1));
     onChange(0);
   };
 
   return (
     <div className="ms-3">
-      {data.quizes.length > currentQuestion + 1 ? (
+      {data.quizes.length > quizAnswerNumber + 1 ? (
         <QuizItem
           data={data.quizes.slice(0, -1)}
-          currentQuestion={currentQuestion}
+          currentQuestion={quizAnswerNumber}
           newQuestion={newQuestion}
           onChange={onChange}
           answerNumber={answerNumber}
         />
       ) : (
         <QuizResult
-          answers={answers}
+          answers={userAnswers}
           correctAnswer={data.quizes.slice(-1)}
           data={data.quizes.slice(0, -1)}
         />

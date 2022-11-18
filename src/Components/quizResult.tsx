@@ -1,9 +1,8 @@
 import React from "react";
 import CorrectAnswers from "./correctAnswers";
-
-// type answers = {
-//
-// }
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {questionIndex,  answersUser} from "./redux/actions/quizInfo";
 
 interface quizResultProps {
   answers: Array<number>;
@@ -17,6 +16,8 @@ const QuizResult: React.FC<quizResultProps> = ({
   correctAnswer,
   data,
 }) => {
+  const dispatch = useDispatch();
+
   const userCorrectAnswers: number = correctAnswer[0].answers.reduce(
     (acc: number, item: number, index: number) =>
       item === answers[index] ? acc + 1 : acc,
@@ -27,10 +28,17 @@ const QuizResult: React.FC<quizResultProps> = ({
     (userCorrectAnswers / data.length) * 100
   );
 
+  const handleResetTestData = () => {
+      dispatch(questionIndex(0))
+      dispatch(answersUser([]))
+  };
+
   return (
     <div>
       <h1 className="text-center mt-4">Ваш результат {percentageRatio}%</h1>
-      <h4 className='mt-5'>Количество правильных ответов: {userCorrectAnswers}</h4>
+      <h4 className="mt-5">
+        Количество правильных ответов: {userCorrectAnswers}
+      </h4>
       {data.map((item: any, index: number) => (
         <CorrectAnswers
           key={index}
@@ -44,6 +52,14 @@ const QuizResult: React.FC<quizResultProps> = ({
           correctAnswer={correctAnswer[0].answers[index]}
         />
       ))}
+      <div className="d-flex flex-wrap">
+        <button className="btn btn-primary mb-4 ms-3 ">
+          <Link to="/" className="text-white text-decoration-none">
+            На главную
+          </Link>
+        </button>
+        <button className="btn btn-primary mb-4 ms-3 " onClick={handleResetTestData}>Пройти еще раз</button>
+      </div>
     </div>
   );
 };
