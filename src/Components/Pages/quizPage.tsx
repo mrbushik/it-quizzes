@@ -25,7 +25,7 @@ const QuizPage: React.FC = () => {
     <div>
       {!!quize.length && (
         <QuizBody
-          data={quize[0]}
+          data={quize[params.Id]}
           answerNumber={answerNumber}
           onChange={handleChange}
         />
