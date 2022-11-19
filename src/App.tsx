@@ -9,8 +9,7 @@ function App() {
     <>
       <NavBar />
       <Switch>
-          <Route exact path="/" component={EducationPage} />
-
+        <Route exact path="/education" component={EducationPage} />
         <Route path="/:Id" component={QuizPage} />
         <Route path="/" component={MainPage} />
         <Redirect to="/" />
