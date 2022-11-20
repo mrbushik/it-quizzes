@@ -34,7 +34,7 @@ const QuizBody: React.FC<quizBodyProps> = ({
   };
 
   return (
-    <div className="ms-3">
+    <div className="ms-3 ">
       {data.quizes.length > quizAnswerNumber + 1 ? (
         <QuizItem
           data={data.quizes.slice(0, -1)}

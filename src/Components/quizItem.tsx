@@ -17,23 +17,23 @@ const QuizItem: React.FC<quizItemProps> = ({
 }) => {
   const handleColor = (index: number) => {
     if (index === answerNumber)
-      return "form-check pointer mb-4 bg-white p-2 d-flex align-items-center border border-primary";
-    return "form-check pointer mb-4 bg-white p-2 d-flex align-items-center ";
+      return "form-check pointer mb-4 bg-white p-2 d-flex align-items-center border border-primary border-radius test-variants  test-variants__active";
+    return "form-check pointer mb-4 bg-white p-2 d-flex align-items-center border-radius test-variants ";
   };
 
   return (
     <div>
       <div>
-        <h5 className="mt-3 text-primary">
+        <h5 className="mt-3 text-primary important-text">
           Вопрос {currentQuestion + 1} | {data.length}
         </h5>
       </div>
       <h4 className="mt-3 text-center mb-4 fw-semibold">
         {data[currentQuestion].question}
       </h4>
-      <div className="bg-light p-5 me-3 ">
+      <div className="bg-light p-5 me-3 test-element ">
         <div className={handleColor(1)} onClick={() => onChange(1)}>
-          <div>
+          <div className="variant-input-container">
             <input
               className="form-check-input ms-0 me-3 pointer"
               type="radio"
@@ -49,7 +49,7 @@ const QuizItem: React.FC<quizItemProps> = ({
           </label>
         </div>
         <div className={handleColor(2)} onClick={() => onChange(2)}>
-          <div>
+          <div className="variant-input-container">
             <input
               className="form-check-input ms-0 me-3 pointer"
               type="radio"
@@ -66,7 +66,7 @@ const QuizItem: React.FC<quizItemProps> = ({
         </div>
         {data[currentQuestion].answer3 && (
           <div className={handleColor(3)} onClick={() => onChange(3)}>
-            <div>
+            <div className="variant-input-container">
               <input
                 className="form-check-input ms-0 me-3 pointer"
                 type="radio"
@@ -84,7 +84,7 @@ const QuizItem: React.FC<quizItemProps> = ({
         )}
         {data[currentQuestion].answer4 && (
           <div className={handleColor(4)} onClick={() => onChange(4)}>
-            <div>
+            <div className="variant-input-container">
               <input
                 className="form-check-input ms-0 me-3 pointer"
                 type="radio"

@@ -14,6 +14,9 @@
   margin-top: 50px !important;
   margin-bottom: 50px !important;
 }
+.border-radius {
+  border-radius: 10px;
+}
 
 .pointer {
   cursor: pointer;
@@ -76,7 +79,6 @@
 .sun-img {
   width: 20px;
   height: 20px;
-  //margin-left: 20px;
 }
 .moon-img {
   width: 17px;
@@ -129,10 +131,6 @@
     }
   }
 
-  .separator {
-    background-color: #fff !important;
-  }
-
   .grey-element div {
     background-color: #242829 !important;
     color: #fff !important;
@@ -141,6 +139,35 @@
   .white-element div {
     background-color: #fff !important;
     color: #111 !important;
+  }
+
+  .white-text {
+    color: #fff !important;
+  }
+
+  .test-element {
+    background: #242829 !important;
+    color: #fff !important;
+  }
+  .test-variants {
+    background: #fff !important;
+
+    label {
+      color: #111111 !important;
+    }
+
+    .variant-input-container {
+      background: #fff !important;
+      .form-check-input:checked {
+        background-color: #0d6efd !important;
+      }
+    }
+  }
+  .test-variants__active {
+    border: 2px solid #0d6efd !important;
+  }
+  .important-text {
+    color: #0d6efd !important;
   }
   .label {
     background-color: #fff !important;
