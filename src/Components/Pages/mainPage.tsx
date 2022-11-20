@@ -19,18 +19,12 @@ const MainPage: React.FC = () => {
 
   useEffect(() => {
     getTests();
-    handleResetTestData();
   }, []);
 
   const getTests = () => {
     axios
       .get(ALL_QUIZES_URL)
       .then((response) => setQuizes(Object.values(response.data)));
-  };
-
-  const handleResetTestData = () => {
-    dispatch(questionIndex(0));
-    dispatch(answersUser([]));
   };
 
   return (

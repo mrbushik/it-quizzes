@@ -2,12 +2,11 @@ import React from "react";
 import CorrectAnswers from "./correctAnswers";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {questionIndex,  answersUser} from "./redux/actions/quizInfo";
+import { questionIndex, answersUser } from "./redux/actions/quizInfo";
 
 interface quizResultProps {
   answers: Array<number>;
   correctAnswer: any;
-  // data: Array<object>
   data: any;
 }
 
@@ -29,8 +28,8 @@ const QuizResult: React.FC<quizResultProps> = ({
   );
 
   const handleResetTestData = () => {
-      dispatch(questionIndex(0))
-      dispatch(answersUser([]))
+    dispatch(questionIndex(0));
+    dispatch(answersUser([]));
   };
 
   return (
@@ -58,7 +57,17 @@ const QuizResult: React.FC<quizResultProps> = ({
             На главную
           </Link>
         </button>
-        <button className="btn btn-primary mb-4 ms-3 " onClick={handleResetTestData}>Пройти еще раз</button>
+        <button
+          className="btn btn-primary mb-4 ms-3 "
+          onClick={handleResetTestData}
+        >
+          Пройти еще раз
+        </button>
+        <button className="btn btn-danger mb-4 ms-3 ">
+          <Link to="/education" className="text-white text-decoration-none">
+            Прокачать знания
+          </Link>
+        </button>
       </div>
     </div>
   );

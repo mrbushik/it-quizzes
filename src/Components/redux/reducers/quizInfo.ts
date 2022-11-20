@@ -1,5 +1,3 @@
-import { quizItemPayload } from "../types";
-
 const initialState = {
   answerNumber: 0,
   userAnswers: [],

@@ -21,3 +21,128 @@
 .choose-input {
   width: 28px;
 }
+.education-img {
+  width: 20px;
+}
+.education-list {
+  list-style: none;
+}
+//switcher
+* {
+  box-sizing: border-box;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color: #111;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: pink;
+}
+
+.fa-sun {
+  color: yellow;
+}
+.sun-img {
+  width: 20px;
+  height: 20px;
+  //margin-left: 20px;
+}
+.moon-img {
+  width: 17px;
+  height: 17px;
+}
+
+//dark mod
+.dark-page {
+  div,
+  html,
+  body,
+  nav {
+    background-color: #111 !important;
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  label,
+  a {
+    color: #fff !important;
+  }
+
+  input,
+  textarea,
+  select {
+    background-color: #2a2d2fcf !important;
+    color: #fff !important;
+  }
+
+  table {
+    background-color: #111;
+    color: #fff;
+  }
+
+  .dark-mode {
+    color: #fff !important;
+    background-color: #2a2d2fcf !important;
+
+    div {
+      background-color: #2a2d2fcf !important;
+    }
+
+    .white-element {
+      background-color: #fff !important;
+      color: #111;
+    }
+  }
+
+  .separator {
+    background-color: #fff !important;
+  }
+
+  .grey-element div {
+    background-color: #242829 !important;
+    color: #fff !important;
+  }
+
+  .white-element div {
+    background-color: #fff !important;
+    color: #111 !important;
+  }
+  .label {
+    background-color: #fff !important;
+  }
+}
