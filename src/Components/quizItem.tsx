@@ -28,7 +28,7 @@ const QuizItem: React.FC<quizItemProps> = ({
           Вопрос {currentQuestion + 1} | {data.length}
         </h5>
       </div>
-      <h4 className="mt-3 text-center mb-4 fw-semibold">
+      <h4 className="mt-3 text-center mb-4 fw-semibold me-3">
         {data[currentQuestion].question}
       </h4>
       <div className="bg-light p-5 me-3 test-element ">
@@ -102,7 +102,7 @@ const QuizItem: React.FC<quizItemProps> = ({
         )}
       </div>
       <button
-        className="btn btn-primary mt-5 float-end me-5"
+        className="btn btn-primary my-5 float-end me-5"
         onClick={newQuestion}
       >
         Ответить

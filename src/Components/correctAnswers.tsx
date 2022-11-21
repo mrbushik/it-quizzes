@@ -22,12 +22,15 @@ const CorrectAnswers: React.FC<correctAnswerProps> = ({
   questionIndex,
 }) => {
   const handleColor = (answerIndex: number) => {
-    if (correctAnswer === answerIndex) return "text-success";
-    if (userAnswer && userAnswer === answerIndex) return "text-danger";
+    if (correctAnswer === answerIndex)
+      return "text-success answers-background ";
+    if (userAnswer && userAnswer === answerIndex)
+      return "text-danger answers-background";
+    return "test-element";
   };
 
   return (
-    <div className="my-50 p-4 me-3 bg-light">
+    <div className="my-50 p-4 me-3 bg-light test-element">
       <h4 className="my-3 fw-semibold">
         №{questionIndex + 1} {question}
       </h4>

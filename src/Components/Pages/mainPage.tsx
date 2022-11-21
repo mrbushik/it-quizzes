@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Quiz from "../quiz";
-import { answersUser, questionIndex } from "../redux/actions/quizInfo";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { quizzesData } from "../redux/actions/requestedData";
+import { quizItem } from "../interfaces";
 
 type quiz = {
   quizName?: string;
@@ -12,10 +13,12 @@ type quiz = {
 
 const MainPage: React.FC = () => {
   const dispatch = useDispatch();
+  const quizzesList: quizItem[] = useSelector(
+    (state: any) => state.requestData.quizzesData
+  );
 
   const ALL_QUIZES_URL: string =
     "https://quiz-61792-default-rtdb.firebaseio.com/quizesItems/.json";
-  const [quizes, setQuizes] = useState<quiz[]>([]);
 
   useEffect(() => {
     getTests();
@@ -24,13 +27,15 @@ const MainPage: React.FC = () => {
   const getTests = () => {
     axios
       .get(ALL_QUIZES_URL)
-      .then((response) => setQuizes(Object.values(response.data)));
+      .then((response) => dispatch(quizzesData(Object.values(response.data))));
   };
+
+  console.log(quizzesList);
 
   return (
     <div className="mt-3 d-flex flex-wrap justify-content-center">
-      {!!quizes.length &&
-        quizes.map((item, index) => (
+      {!!quizzesList.length &&
+        quizzesList.map((item, index) => (
           <Quiz
             key={index}
             quizName={item.quizName}

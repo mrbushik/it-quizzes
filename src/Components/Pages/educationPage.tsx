@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { educationItem } from "../interfaces";
 import EducationItem from "../educationItem";
+import { useDispatch, useSelector } from "react-redux";
+import { educationData } from "../redux/actions/requestedData";
 
 const EducationPage: React.FC = () => {
+  const dispatch = useDispatch();
+  const educationList: educationItem[] = useSelector(
+    (state: any) => state.requestData.educationData
+  );
+
   const EDUCATION_INFO_URL: string =
     "https://quiz-61792-default-rtdb.firebaseio.com/education/.json";
   const technologies: string[] = [
@@ -15,27 +22,28 @@ const EducationPage: React.FC = () => {
 
   const [educationInfo, setEducationInfo] = useState<educationItem[]>([]);
   const [filteredTechnologyList, setFilteredTechnologyList] =
-    useState<educationItem[]>(educationInfo);
+    useState<educationItem[]>(educationList);
   const [technologiesType, setTechnologiesType] = useState<string>(
     technologies[0]
   );
 
-  const getDefaultValue = () => setFilteredTechnologyList(educationInfo);
+  const getDefaultValue = () => setFilteredTechnologyList(educationList);
 
   useEffect(() => {
     axios.get(EDUCATION_INFO_URL).then((response: any) => {
-      setEducationInfo(Object.values(response.data));
+      // setEducationInfo(Object.values(response.data));
+      dispatch(educationData(Object.values(response.data)));
     });
   }, []);
 
   useEffect(() => {
     getDefaultValue();
-  }, [educationInfo]);
+  }, [educationList]);
 
   const handleFilter = (type: string) => {
     setTechnologiesType(type);
     if (type === technologies[0]) return getDefaultValue();
-    const targetList: educationItem[] = educationInfo.filter(
+    const targetList: educationItem[] = educationList.filter(
       (item: educationItem) => item.language === type
     );
     setFilteredTechnologyList(targetList);

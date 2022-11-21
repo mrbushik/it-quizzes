@@ -18,6 +18,11 @@
   border-radius: 10px;
 }
 
+.switch {
+  position: absolute;
+  right: 10px;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -166,9 +171,15 @@
   .test-variants__active {
     border: 2px solid #0d6efd !important;
   }
+
+  .answers-background {
+    background-color: #242829 !important;
+  }
+
   .important-text {
     color: #0d6efd !important;
   }
+
   .label {
     background-color: #fff !important;
   }

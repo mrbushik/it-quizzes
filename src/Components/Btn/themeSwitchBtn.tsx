@@ -37,7 +37,7 @@ const ThemeSwitchBtn: React.FC = () => {
   }, [colorMod]);
 
   return (
-    <div className="mx-2">
+    <div className="mx-2 switch">
       <input
         type="checkbox"
         className="checkbox"
@@ -45,7 +45,7 @@ const ThemeSwitchBtn: React.FC = () => {
         checked={colorMod}
         onChange={handleChangeTheme}
       />
-      <label  htmlFor="checkbox" className="label">
+      <label htmlFor="checkbox" className="label">
         <img
           alt="moon"
           className="moon-img"
