@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { educationItem } from "../interfaces";
 import EducationItem from "../educationItem";
 import { useDispatch, useSelector } from "react-redux";
-import { educationData } from "../redux/actions/requestedData";
+import { educationItemsRequest } from "../redux/actions/requestedData";
 
 const EducationPage: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
   const educationList: educationItem[] = useSelector(
     (state: any) => state.requestData.educationData
   );
@@ -20,7 +19,6 @@ const EducationPage: React.FC = () => {
     "React",
   ];
 
-  const [educationInfo, setEducationInfo] = useState<educationItem[]>([]);
   const [filteredTechnologyList, setFilteredTechnologyList] =
     useState<educationItem[]>(educationList);
   const [technologiesType, setTechnologiesType] = useState<string>(
@@ -30,10 +28,7 @@ const EducationPage: React.FC = () => {
   const getDefaultValue = () => setFilteredTechnologyList(educationList);
 
   useEffect(() => {
-    axios.get(EDUCATION_INFO_URL).then((response: any) => {
-      // setEducationInfo(Object.values(response.data));
-      dispatch(educationData(Object.values(response.data)));
-    });
+    dispatch(educationItemsRequest(EDUCATION_INFO_URL));
   }, []);
 
   useEffect(() => {

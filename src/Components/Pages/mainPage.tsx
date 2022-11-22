@@ -1,18 +1,11 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import Quiz from "../quiz";
 import { useDispatch, useSelector } from "react-redux";
-import { quizzesData } from "../redux/actions/requestedData";
+import { quizzesRequest } from "../redux/actions/requestedData";
 import { quizItem } from "../interfaces";
 
-type quiz = {
-  quizName?: string;
-  quizImg?: string;
-  quizDescription?: string;
-};
-
 const MainPage: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
   const quizzesList: quizItem[] = useSelector(
     (state: any) => state.requestData.quizzesData
   );
@@ -21,16 +14,8 @@ const MainPage: React.FC = () => {
     "https://quiz-61792-default-rtdb.firebaseio.com/quizesItems/.json";
 
   useEffect(() => {
-    getTests();
+    dispatch(quizzesRequest(ALL_QUIZES_URL));
   }, []);
-
-  const getTests = () => {
-    axios
-      .get(ALL_QUIZES_URL)
-      .then((response) => dispatch(quizzesData(Object.values(response.data))));
-  };
-
-  console.log(quizzesList);
 
   return (
     <div className="mt-3 d-flex flex-wrap justify-content-center">

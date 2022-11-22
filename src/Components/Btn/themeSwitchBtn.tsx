@@ -12,15 +12,15 @@ const ThemeSwitchBtn: React.FC = () => {
   );
 
   const [colorMod, setColorMod] = useState(
-    storedThemeValue === themeKeys.LIGHT ? false : true
+    storedThemeValue === themeKeys.LIGHT
   );
 
   const onToggleTheme = (themeMod: string) => dispatch(theme(themeMod));
 
   const handleChangeTheme = () => {
     colorMod
-      ? handleTheme(false, themeKeys.LIGHT)
-      : handleTheme(true, themeKeys.DARK);
+      ? handleTheme(false, themeKeys.DARK)
+      : handleTheme(true, themeKeys.LIGHT);
   };
 
   const handleTheme = (mode: boolean, theme: string) => {
@@ -42,7 +42,7 @@ const ThemeSwitchBtn: React.FC = () => {
         type="checkbox"
         className="checkbox"
         id="checkbox"
-        checked={colorMod}
+        checked={!colorMod}
         onChange={handleChangeTheme}
       />
       <label htmlFor="checkbox" className="label">

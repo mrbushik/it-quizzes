@@ -15,7 +15,7 @@ const EducationItem: React.FC<educationItem> = ({
         </a>
       </div>
       <div className="ms-3">
-        <img src={img} className="education-img" />
+        <img alt={language} src={img} className="education-img" />
       </div>
     </div>
   );
