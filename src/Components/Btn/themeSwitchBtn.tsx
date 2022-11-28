@@ -11,9 +11,7 @@ const ThemeSwitchBtn: React.FC = () => {
     (state: any) => state.themeSwitch.theme
   );
 
-  const [colorMod, setColorMod] = useState(
-    storedThemeValue === themeKeys.LIGHT
-  );
+  const [colorMod, setColorMod] = useState(storedThemeValue !== themeKeys.DARK);
 
   const onToggleTheme = (themeMod: string) => dispatch(theme(themeMod));
 
@@ -30,11 +28,20 @@ const ThemeSwitchBtn: React.FC = () => {
   };
 
   useEffect(() => {
+    getDefaultValue();
+  }, []);
+
+  useEffect(() => {
     const body: any = document.querySelector("html");
     currentTheme === themeKeys.DARK
       ? body.classList.add("dark-page")
       : body.classList.remove("dark-page");
   }, [colorMod]);
+
+  const getDefaultValue = () => {
+    if (storedThemeValue) return;
+    localStorage.setItem("theme", themeKeys.LIGHT);
+  };
 
   return (
     <div className="mx-2 switch">
