@@ -37,7 +37,7 @@ const QuizItem: React.FC<quizItemProps> = ({
             <input
               className="form-check-input ms-0 me-3 pointer"
               type="radio"
-              checked={answerNumber === 1 ? true : false}
+              checked={answerNumber === 1}
               onChange={onChange.bind(null, 1)}
             />
           </div>
@@ -53,7 +53,7 @@ const QuizItem: React.FC<quizItemProps> = ({
             <input
               className="form-check-input ms-0 me-3 pointer"
               type="radio"
-              checked={answerNumber === 2 ? true : false}
+              checked={answerNumber === 2}
               onChange={onChange.bind(null, 2)}
             />
           </div>
@@ -70,7 +70,7 @@ const QuizItem: React.FC<quizItemProps> = ({
               <input
                 className="form-check-input ms-0 me-3 pointer"
                 type="radio"
-                checked={answerNumber === 3 ? true : false}
+                checked={answerNumber === 3}
                 onChange={onChange.bind(null, 3)}
               />
             </div>
@@ -88,7 +88,7 @@ const QuizItem: React.FC<quizItemProps> = ({
               <input
                 className="form-check-input ms-0 me-3 pointer"
                 type="radio"
-                checked={answerNumber === 4 ? true : false}
+                checked={answerNumber === 4}
                 onChange={onChange.bind(null, 4)}
               />
             </div>
