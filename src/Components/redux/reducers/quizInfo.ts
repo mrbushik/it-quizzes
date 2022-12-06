@@ -1,8 +1,8 @@
 const storageAnswerNumber: number | null = Number(
-  localStorage.getItem("answerNumber")
+  localStorage.getItem("userAnswers")
 );
 const storageUserAnswers: any = localStorage
-  .getItem("userAnswers")
+  .getItem("answerNumber")
   ?.split(",")
   .map((item) => +item);
 const testIndex: string | null = localStorage.getItem("testIndex");
